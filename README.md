@@ -285,6 +285,34 @@ You will need to import it into your components and call the same methods that y
   }
 </script>
 ```
+Clicking on the button will send the event on a channel `clicked` with payload `clickCount`.
+
+#### Receiving Events
+Any component can subscribe / listen to the event.
+Listening to the `clicked` channel from the `$emit`.
+`EventBus.$on(channel: string, callback(payload1,...))`
+```js
+<script>
+import { EventBus } from '@/event-bus';
+export default {
+  
+}
+
+const clickHandler = function(clickCount) {
+  console.log(`Clicke: ${clickCount}`);
+}
+
+EventBus.$on('clicked`, clickHandler);
+
+</script>
+```
+
+#### Removing Event Listeners
+`EventBus.$off(channel: string, callback(payload1,...))`
+```js
+
+EventBus.$off('clicked', clickHandler);
+```
 
 
 
