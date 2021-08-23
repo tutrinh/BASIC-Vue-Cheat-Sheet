@@ -109,7 +109,66 @@ Vue.component('component-name', {
   props: {
     // parameters the component accepts
     message: String,
+    product: Object,
+    email: {
+      type: String,
+      required: true,
+      default: "none",
+      validator: function(value) {
+        // should return true if value is valid
+      }
+    }
+  },
+  data: function() {
+    return {
+      firstName: 'Henry',
+      lastName: 'Mastery'
+    }
+  },
+  computed: {
+    // return cached values until dependencies change
+    fullName: function() {
+      return this.firstName + ' ' + this.lastName
+    }
+  },
+  watch: {
+    // called when firstName changes value
+    firstName: function(value, oldValue) {
     
-  }
+    }
+  },
+  methods: {...},
+  template: '<span>{{ message }} </span>'
 })
 ```
+
+Single File Component
+Create a .vue file, src/app/components/my-component.vue
+```html
+<template>
+  <span>{{ firstName }}</span> 
+</template>
+<script>
+  // do your imports here
+  import Vue from "vue";
+  export default {
+    components: {
+      // list of components used in this component  
+    },
+    props: {
+    
+    },
+    data() {
+      return {
+        firstName: 'Henry'
+      }
+    },
+    computed: {},
+    watch: {},
+    mounted() {...},
+    methods: {...},
+    
+  }
+</script>
+```
+
