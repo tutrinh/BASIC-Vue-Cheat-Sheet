@@ -143,7 +143,7 @@ Vue.component('component-name', {
 ```
 
 Single File Component
-Create a .vue file, src/app/components/my-component.vue
+- Create a .vue file, src/app/components/my-component.vue
 ```html
 <template>
   <span>{{ firstName }}</span> 
@@ -170,5 +170,16 @@ Create a .vue file, src/app/components/my-component.vue
     
   }
 </script>
+<style>
+  ...
+</style>
 ```
+- Register the coponment in index.js
+```js
+import MyComponent from '@/components/my-component.vue';
+Vue.component('my-component', MyComponent);
 
+new Vue({
+  el: #app
+})
+```
