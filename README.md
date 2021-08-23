@@ -150,10 +150,11 @@ Single File Component
 </template>
 <script>
   // do your imports here
-  import Vue from "vue";
+  import AnotherComponent from "@/components/another-component.vue";
   export default {
     components: {
       // list of components used in this component  
+      AnotherComponent
     },
     props: {
     
