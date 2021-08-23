@@ -205,3 +205,50 @@ this.$emit('incrementBy', 5)
 'incrementBy' - custom event name
 5 - data sent up to parent
 ```
+
+## Slot/Slots
+### Default/Single Slot
+Component Template
+```html
+/* my-component.vue */
+<div>
+  <h2> Heading </h2>
+  <slot>
+    Only show if no slot in content
+  </slot>
+</div>
+```
+Using the component with slot
+```html
+<my-component>
+  <p>This will go inside the slot</p>
+</my-component>
+```
+
+### Multiple Slots
+Component Template
+```html
+/* my-component.vue */
+<div>
+  <header>
+    <slot name="header"></slot>
+  </header>
+  <main>
+    <slot>Default content</slot>
+  </main>
+  <footer>
+    <slot name="footer"></slot>
+  </footer>
+</div>
+```
+Usage
+```html
+<app-layout>
+  <h1 slot="header">Heading</h1>
+  <p>Main content</p>
+  <p slot="footer">Contact info</p>
+</app-layout>
+
+```
+
+
