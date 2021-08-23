@@ -245,6 +245,47 @@ Listening to custom event from child.
   }
 </script>
  ```
+## Event Bus
+The event bus / publish-subscribe pattern is a way for getting components to talk to each other without parent child relationship. Any component, anywhere.
+Need to create the event bus and export it so other modules and components can use it. 
+- Create a new js file
+- Import Vue library
+- Export an instance of it
+
+```js
+// src/event-bus.js
+import Vue from 'vue';
+export const EventBus = new Vue();
+```
+What you are essentially getting is a component that is entirely decoupled from the DOM or the rest of the app. All that exists on it are its instance methodds.
+
+You will need to import it into your components and call the same methods that you would use if you were passing messages between parent and child components.
+
+#### Sending Events
+`EventBus.$emit(channel: string, payload1: any, ...)`
+```js
+// src/components/Button.vue
+<template>
+  <button @click='emitGlobalClickEvent()'>{{ clickCount }}</button
+</template>
+<script>
+  import { EventBus } from '@/event-bus';
+  export default {
+    data() {
+    return {
+      clickCount: 0
+    }
+  },
+  methods: {
+    emitGlobalClickEvent() {
+      this.clickCount++;
+      EventBus.$emit('clicked', this.clickCount);
+    }
+  }
+  }
+</script>
+```
+
 
 
 ## Slot/Slots
