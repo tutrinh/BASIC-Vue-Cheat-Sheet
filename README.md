@@ -1,5 +1,17 @@
 # BASIC Vue Cheat Sheet
 
+## Lifecycle Hooks
+```text
+beforeCreate
+created
+beforeMount
+mounted
+beforeUpdate
+updated
+beforeDestroy
+destroyed
+```
+
 ## Expressions
 ```html
 <div id="app">
@@ -30,6 +42,22 @@ Style color set to value of activeColor
 <div :style="{ color: activeColor}"
 ```
 
+## Actions / Events
+```html
+<button v-on:click="addToCart">...</button>
+Shorthand
+<button @click="addToCart">...</button>
+```
+With arguments
+```html
+<button @click="addToCart(product)">...</button>
+```
+Prevent default behavior
+```html
+<form @submit.prevent="addProduct">...</form>
+.stop // stop all event propagation
+.self // only trigger if event.target is element itself
+```
     
 
 ## Directives
