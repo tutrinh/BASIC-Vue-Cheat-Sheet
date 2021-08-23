@@ -362,4 +362,25 @@ Usage
 
 ```
 
+## Scoped Slots
+Allows you to pass a `template` to the slod instead of passing a rendered element. It is called a `scoped` slot because although the template is rendered in the parent scope, it will have access to certain child data.
+
+```html
+/* child-component.vue */
+<div>
+  <slot my-prop="Hello from child"></slot>
+</div>
+```
+A parent that uses this component will declare a `template` element in the slot. This template element will have an attribute `scope` that names an `alias` object. Any props added to the slot(in the child's template) are available as properties of the alias object.
+```html
+<child>
+  <template scope="props">
+    <span>Hello from parent</span>
+    <span>{{ props.my-prop}}</span>
+  </template>
+</child>
+```
+
+
+
 
