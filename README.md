@@ -99,3 +99,17 @@ v-for inside a component
 <cart-product v-for="item in products" :product="item" :key="item.id">...</cart-product>
 ```
 
+## Component
+```js
+Vue.component('component-name', {
+  components: {
+    // components that can be used in the template
+    ProductComponent, ReviewComponent
+  },
+  props: {
+    // parameters the component accepts
+    message: String,
+    
+  }
+})
+```
