@@ -409,7 +409,7 @@ Another way to think of it is accessing the child's specific data and methods fr
 You're making firstName, lastName and onClick method available for the parent to access. Now the parent can access this child's data object and methods with the `template` tag.
 ```html
 <child-component>
-  <template slot='contact' slot-scope='slotProps'>
+  <template v-slot:contact='slotProps'>
     <h1> {{ slotProps.firstName }} {{ slotProps.lasttName }}</h1>
     <button @click='slotProps.onClick'>Click</button>
   </template>
@@ -418,6 +418,7 @@ You're making firstName, lastName and onClick method available for the parent to
 ```
 
 #### Another Way Using Object Destructuring
+You can use object destructuring to create direct references to the scoped slot data rather than using a single variable name. In other words, you can use `v-slot="{google}"` instead of `v-slot="slotProps"` and then you can use user directly instead of `slotProps.google`.
 Child
 ```html
 <template>
@@ -432,7 +433,7 @@ Child
 Parent
 ```html
 <child-component>
-    <template slot-scope="{ google, map }">
+    <template v-slot="{ google, map }">
       {{ map }}
       {{ google }}
     </template>
