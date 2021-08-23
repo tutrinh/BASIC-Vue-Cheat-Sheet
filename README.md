@@ -1,5 +1,14 @@
 # BASIC Vue Cheat Sheet
 
+## Expressions
+```html
+<div id="app">
+  <p> I have a {{ product }} </p>
+  <p>{{ isWorking ? 'YES' : 'NO' }}</p>
+  <p>{{ product.getSalePrice() }}</p>
+</div>
+```
+
 ## Directives
 Conditional
 ```html
@@ -38,3 +47,4 @@ v-for inside a component
 ```html
 <cart-product v-for="item in products" :product="item" :key="item.id">...</cart-product>
 ```
+
