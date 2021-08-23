@@ -419,6 +419,7 @@ You're making firstName, lastName and onClick method available for the parent to
 
 #### Another Way Using Object Destructuring
 You can use object destructuring to create direct references to the scoped slot data rather than using a single variable name. In other words, you can use `v-slot="{google}"` instead of `v-slot="slotProps"` and then you can use user directly instead of `slotProps.google`.
+
 Child
 ```html
 <template>
