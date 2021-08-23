@@ -9,6 +9,29 @@
 </div>
 ```
 
+## Binding
+```html
+<a v-bind:href="url">...</a>
+Shorthand
+<a :href="url">...</a>
+```
+Adding/removing attributes based on true/false
+```html
+<button :disabled="isButtomDisabled">...</button>
+```
+CSS Class
+```html
+<div :class="{ active: isActive}">...</div>
+If isActive then add class 'active'
+```
+Style
+```html
+Style color set to value of activeColor
+<div :style="{ color: activeColor}"
+```
+
+    
+
 ## Directives
 Conditional
 ```html
