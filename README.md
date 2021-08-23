@@ -20,4 +20,21 @@ v-model.lazy="..." // Sync inpus after change event
 v-model.number="..." // Always returns a number
 v-model.trim="..." // Strips whitespace
 ```
-
+## List Rendering
+```html
+<li v-for="item in items" :key="item.id">
+  {{ item }}
+</li>
+```
+Using index to get position in an array
+```html
+<li v-for="(item, index) in items">...</li>
+```
+Iterate through objects
+```html
+<li v-for="(value, key) in object">...</li>
+```
+v-for inside a component
+```html
+<cart-product v-for="item in products" :product="item" :key="item.id">...</cart-product>
+```
