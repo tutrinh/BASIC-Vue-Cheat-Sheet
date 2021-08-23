@@ -364,6 +364,7 @@ Usage
 
 ## Scoped Slots
 Allows you to pass a `template` to the slod instead of passing a rendered element. It is called a `scoped` slot because although the template is rendered in the parent scope, it will have access to certain child data.
+Scoped slot is used when you want a `template` inside a slot to access `data from the child component` that renders the slot content.
 
 ```html
 /* child-component.vue */
@@ -379,6 +380,63 @@ A parent that uses this component will declare a `template` element in the slot.
     <span>{{ props.my-prop}}</span>
   </template>
 </child>
+```
+
+Another way to think of it is accessing the child's specific data and methods from slots.
+```html
+/* child-component.vue */
+<template>
+  <div>
+    <slot name='contact' v-bind:firstName="firstName" v-bind:lastName="lastName" v-bind:onClick='onClick'></slot>
+  </div>
+</template>
+<script>
+  export default {
+    data() {
+      return {
+        firstName: 'John',
+        lastName: 'Doe'
+      }
+    },
+    methods: {
+      onClick() {
+        console.log('clicked');
+      }
+    }
+  }
+</script>
+```
+You're making firstName, lastName and onClick method available for the parent to access. Now the parent can access this child's data object and methods with the `template` tag.
+```html
+<child-component>
+  <template slot='contact' slot-scope='slotProps'>
+    <h1> {{ slotProps.firstName }} {{ slotProps.lasttName }}</h1>
+    <button @click='slotProps.onClick'>Click</button>
+  </template>
+</child-component>
+
+```
+
+#### Another Way Using Object Destructuring
+Child
+```html
+<template>
+  <div>
+      <slot
+        :google="google"
+        :map="map"
+      />
+  </div>
+</template>
+```
+Parent
+```html
+<child-component>
+    <template slot-scope="{ google, map }">
+      {{ map }}
+      {{ google }}
+    </template>
+  </child-component>
 ```
 
 
