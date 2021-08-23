@@ -184,3 +184,24 @@ new Vue({
   el: #app
 })
 ```
+## Custom Events
+Use props to pass data into child components,
+custom events to pass data to parent elements.
+
+Set listener on component, within its parent
+```html
+<button-counter v-on:incrementBy="incWithVal">
+  
+```
+Inside parent component
+```js
+methods: {
+  incWithVal: function(toAdd) {...}
+}
+```
+Inside button-counter template
+```js
+this.$emit('incrementBy', 5)
+'incrementBy' - custom event name
+5 - data sent up to parent
+```
