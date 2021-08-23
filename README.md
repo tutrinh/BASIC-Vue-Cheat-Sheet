@@ -205,6 +205,47 @@ this.$emit('incrementBy', 5)
 'incrementBy' - custom event name
 5 - data sent up to parent
 ```
+#### Another Example
+Child component passing data back to parent with custom events.
+```html
+<template>
+  <button @click="changeMsg">Click to change message</button>
+</template>
+<script>
+  export default {
+    methods: {
+      changeMsg() {
+        this.$emit('customEventName', data want to pass to the parent);
+        this.$emit('changeMsg', 'Hello');
+      }
+    }
+  }
+</script>
+
+```
+Parent using child component and receiving data from child.
+Listening to custom event from child.
+```html
+<template>
+  <HelloWorld @customEventName="methodToCall" />
+   <HelloWorld @changeMsg="setMessage" />
+</template>
+<script>
+  export default {
+    data() {
+      return {
+        welcomeMsg: "Hello World"
+      };
+    },
+    methods: {
+      setMessage(msg) {
+        this.welcomeMsg = msg;
+      }
+    }
+  }
+</script>
+ ```
+
 
 ## Slot/Slots
 ### Default/Single Slot
