@@ -313,7 +313,8 @@ EventBus.$on('clicked`, clickHandler);
 
 EventBus.$off('clicked', clickHandler);
 ```
-
+Rmove all listeners for a specific event, `EventBus.$off('clicked')`
+Remove all events, `EventBus.$off()`
 
 
 ## Slot/Slots
